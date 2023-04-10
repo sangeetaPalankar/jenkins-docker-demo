@@ -10,7 +10,18 @@ git branch: "main", url: 'https://github.com/sangeetaPalankar/jenkins-docker-dem
 
 }
 
-
+stage('Build'){
+steps{
+sh 'chmod a+x mvnw'
+sh './mvnw clean package -DskipTests=true' 
+			}
+			
+			post{
+				always{
+					archiveArtifacts 'target/*.jar'
+				}
+			}
+		}
 		
 		stage(DockerBuild){
 			steps{
