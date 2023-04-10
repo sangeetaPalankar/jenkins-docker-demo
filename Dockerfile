@@ -1,5 +1,6 @@
 FROM openjdk:17
+EXPOSE 9011
 
-COPY \target\PhysicianAvailability-0.0.1-SNAPSHOT.jar /PhysicianAvailability.jar
+ADD \target\demo1.jar /demo1.jar
 
-CMD ["java","-jar","PhysicianAvailability.jar"]
+ENTRYPOINT ["java","-jar","demo1.jar"]
